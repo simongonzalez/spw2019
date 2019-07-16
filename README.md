@@ -1,2 +1,2 @@
-# spw2019
+# SocioPhonetics Workshop 2019
 Script sharing
