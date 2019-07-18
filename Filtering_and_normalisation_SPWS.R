@@ -97,7 +97,7 @@ df$Outlier3 <- FALSE
 
 for (vwl in levels(factor(df$vowelstressgram))) {
   for (spkr in levels(factor(df$speaker))) {
-    rows <- which(df$vowel==vwl & df$speaker==spkr)
+    rows <- which(df$vowelstressgram==vwl & df$speaker==spkr)
     if (length(rows) > 1) {
       subDF <- df[rows,]
       means <- apply(subDF[,c("F1","F2")], 2, mean, na.rm=TRUE)
