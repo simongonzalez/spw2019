@@ -95,7 +95,7 @@ df$Outlier3 <- FALSE
 
 #the analysis calculates SD per vowel per speaker, so it loops through each vowel for each speaker and determines the mean and SD of those rows
 
-for (vwl in levels(factor(df$vowel))) {
+for (vwl in levels(factor(df$vowelstressgram))) {
   for (spkr in levels(factor(df$speaker))) {
     rows <- which(df$vowel==vwl & df$speaker==spkr)
     if (length(rows) > 1) {
