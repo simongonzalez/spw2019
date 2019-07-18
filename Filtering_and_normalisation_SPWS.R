@@ -128,7 +128,7 @@ outliersremoved <- df[df$Outlier3 == FALSE, ]
 lobanov.SPWS <- function(outliersremoved, speaker, vowel, F1, F2, stress, grammatical){
   
   #first filter the data so there is only stressed and non-grammatical tokens
-  stressed_df <- df %>%
+  stressed_df <- outliersremoved %>%
     filter(stress == "stressed",
            grammatical == "no")
   
@@ -154,7 +154,7 @@ lobanov.SPWS <- function(outliersremoved, speaker, vowel, F1, F2, stress, gramma
   
   #combine these values with the full raw dataset
   #then use these values to normalise the data in a new Lobanov style
-  df <- df %>%
+  outliersremoved <- outliersremoved %>%
     inner_join(., summary_mean_of_means) %>%
     mutate(F1_lobanov_SPWS = (F1 - mean_of_means_F1)/sd_of_means_F1,
            F2_lobanov_SPWS = (F2 - mean_of_means_F2)/sd_of_means_F2,
@@ -163,7 +163,7 @@ lobanov.SPWS <- function(outliersremoved, speaker, vowel, F1, F2, stress, gramma
            sd_of_means_F1 = NULL,
            sd_of_means_F2 = NULL)
   
-  return(df)
+  return(outliersremoved)
 }
 
 #now run the function on your dataset, this will add 2 new variables (F1_lobanov_SPWS and F2_lobanov_SPWS)
